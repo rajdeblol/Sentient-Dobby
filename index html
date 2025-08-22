@@ -1,45 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Smart Startup Validator</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/static/style.css">
 </head>
-<body class="bg-gradient-to-r from-gray-900 via-black to-gray-800 text-white min-h-screen flex flex-col items-center justify-center">
+<body class="bg-gradient-to-br from-gray-950 via-black to-gray-900 text-white min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-3xl">
+    <div class="glass p-8 rounded-2xl shadow-2xl border border-white/10">
+      <h1 class="text-4xl font-extrabold text-center mb-2 tracking-tight">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400">
+          Smart Startup Validator
+        </span>
+      </h1>
+      <p class="text-center text-gray-300 mb-6">Validate your idea instantly with Sentient Dobby</p>
 
-  <div class="max-w-2xl w-full p-8 bg-gray-800/70 backdrop-blur-lg rounded-2xl shadow-2xl border border-gray-700">
-    
-    <h1 class="text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-      🚀 Smart Startup Validator
-    </h1>
-    <p class="text-center text-gray-300 mb-6">Validate your startup idea instantly with Sentient AI</p>
+      <form method="post" action="/validate" class="space-y-4">
+        <textarea name="idea" rows="6" required
+          placeholder="Describe your startup idea in 3–5 sentences…"
+          class="w-full p-4 rounded-xl bg-black/60 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500">{{ idea }}</textarea>
 
-    <!-- Form -->
-    <form method="post" action="/validate" class="space-y-4">
-      <textarea name="idea" placeholder="Enter your startup idea..."
-        class="w-full h-32 p-4 rounded-xl bg-gray-900 border border-gray-700 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
-        required>{{ idea if idea else "" }}</textarea>
+        <button type="submit"
+          class="w-full py-3 rounded-xl font-semibold text-lg bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 transition-all shadow-lg">
+          🔍 Validate Idea
+        </button>
+      </form>
 
-      <button type="submit"
-        class="w-full py-3 rounded-xl font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 transition-all shadow-lg">
-        🔍 Validate Idea
-      </button>
-    </form>
-
-    <!-- Results -->
-    {% if result %}
-    <div class="mt-6 p-6 bg-gray-900 border border-gray-700 rounded-xl shadow-md">
-      <h2 class="text-xl font-semibold text-purple-400 mb-3">📊 Validation Result</h2>
-      <p class="text-gray-200 whitespace-pre-line">{{ result }}</p>
+      {% if result %}
+      <div class="mt-7 p-6 rounded-xl bg-black/60 border border-white/10">
+        <h2 class="text-xl font-semibold text-purple-300 mb-3">📊 Validation Result</h2>
+        <div class="prose prose-invert max-w-none whitespace-pre-wrap">{{ result }}</div>
+      </div>
+      {% endif %}
     </div>
-    {% endif %}
+
+    <p class="text-sm text-center text-gray-500 mt-4">Built with ❤️ using Sentient Dobby API & FastAPI</p>
   </div>
-
-  <footer class="mt-6 text-gray-500 text-sm">
-    Built with ❤️ using Sentient Dobby API & FastAPI
-  </footer>
-
 </body>
 </html>
