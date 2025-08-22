@@ -1,9 +1,4 @@
-/* Smooth fade-in animation */
-body {
-  animation: fadeIn 1.2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+/* simple glass effect + page fade-in */
+body { animation: fadeIn 0.8s ease; }
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+.glass { background: radial-gradient(1200px 500px at 50% -10%, rgba(124,92,255,.15), transparent 60%), rgba(20,20,28,.65); }
