@@ -1,0 +1,9 @@
+/* Smooth fade-in animation */
+body {
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
